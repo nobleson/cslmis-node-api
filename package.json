@@ -1,5 +1,5 @@
 {
-  "name": "taxcalc",
+  "name": "cslmisnode",
   "main": "main.js",
   "description": "A microservice for construction skills",
   "dependencies": {
@@ -18,7 +18,7 @@
     "type": "git",
     "url": "https://github.com/nobleson/cslmis-node-api.git"
   },
-  "author": "Ravi Srinivasan <ravis@redhat.com>",
+  "author": "ITYAV LUKE <noblesityav@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nobleson/cslmis-node-api/issues"
