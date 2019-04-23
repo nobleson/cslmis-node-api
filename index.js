@@ -29,7 +29,7 @@ var mongoUser =  process.env.MONGODB_USER,
   mongoURL += mongoUser + ':' + mongoPassword + '@';
   mongoURL += mongoHost + ':' +  mongoPort + '/' + mongoDatabase;
 
-    console.log('MongoURL '+mongoURL) 
+    console.log('Mongo URL '+mongoURL) 
     mongoose.connect(mongoURL,{ useNewUrlParser: true }) 
     .then(() => console.log('MongoDB connected…'))
     .catch(err => console.log(err))
