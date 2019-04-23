@@ -161,7 +161,7 @@
               "imageChangeParams": {
                 "automatic": true,
                 "containerNames": [
-                  "taxcalc"
+                  "cslmisnode"
                 ],
                 "from": {
                   "kind": "ImageStreamTag",
@@ -264,7 +264,7 @@
         "metadata": {
           "name": "${DATABASE_SERVICE_NAME}",
           "annotations": {
-            "description": "Exposes the taxcalc database"
+            "description": "Exposes the cslmisnode database"
           }
         },
         "spec": {
