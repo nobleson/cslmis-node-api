@@ -3,11 +3,9 @@
   "main": "index.js",
   "description": "A microservice for construction skills",
   "dependencies": {
-    "boom": "^7.2.2",
-    "fastify": "^1.13.0",
-    "fastify-mongodb": "^0.9.1",
-    "fastify-swagger": "^0.15.3",
-    "mongoose": "^5.3.14"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.8"
   },
   "engine": {
     "node": "*",

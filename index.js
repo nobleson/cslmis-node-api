@@ -1,20 +1,12 @@
-// Require the fastify framework and instantiate it
-const fastify = require('fastify')({
-    logger: true
-  })
-  const os = require('os'),
-  hostname = os.hostname();
-  // Require external modcules
-  const mongoose = require('mongoose')
-  
-  // Import Routes
-  const routes = require('./routes')
-  
-  // Import Swagger Options
-  const swagger = require('./config/swagger')
-  
-  // Register Swagger
-  fastify.register(require('fastify-swagger'), swagger.options)
+var express = require('express'),
+    app     = express(),
+    bodyParser = require('body-parser'),
+    mongoose   = require('mongoose'),
+    os = require('os'),
+    hostname = os.hostname();
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
   var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
   ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
@@ -34,30 +26,20 @@ const fastify = require('fastify')({
     .then(() => console.log('MongoDB connected…'))
     .catch(err => console.log(err))
 
-  // Loop over each route
-  routes.forEach((route, index) => {
-    fastify.route(route)
-  })
-  
+    var route = express.Router();
+
+    // All our services are under the /api context
+    app.use('/api', route);
+    
+    // Start defining routes for our app/microservice
+    
+    // A route that dumps hostname information from pod
+    route.get('/', function(req, res) {
+        res.send('Hi! I am running on host -> ' + hostname + '\n');
+    });
+
   // Run the server!
-  const start = async () => {
-    try {
-      fastify.listen(port, ip, function (err, address) {
-        if (err) {
-          fastify.log.error(err)
-          process.exit(1)
-        }
-        console.log('Hi! I am running on host -> ' + hostname + '\n');
-        fastify.log.info(`server listening on ${address}`)
-      })
-     // await fastify.listen(3000)
-      //fastify.swagger()
-   
-    } catch (err) {
-      fastify.log.error(err)
-      process.exit(1)
-    }
-  }
-  start()
+app.listen(port, ip);
+console.log('nodejs server running on http://%s:%s', ip, port);
 
-
+module.exports = app;
