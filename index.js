@@ -35,7 +35,12 @@ app.use(bodyParser.json());
     
     // A route that dumps hostname information from pod
     route.get('/', function(req, res) {
-        res.send('Hi! I am running on host -> ' + hostname + '\n');
+        res.send('<!doctype html>\n<html lang="en">\n' +  
+        '\n<meta charset="utf-8">\n<title>CSLMIS RESTFul API</title>\n' + 
+        '<style type="text/css">* {font-family:arial, sans-serif;}</style>\n' + 
+        '\n\n<h1>Welcome to CSLMIS Back-End</h1>\n' + 
+        '<div id="content"><p>The server is running on</p><ul><li>Host '+hostname+'</li><li>IP '+ip+'</li><li>Port '+port+'</li></ul></div>' + 
+        '\n\n');
     });
 
   // Run the server!
