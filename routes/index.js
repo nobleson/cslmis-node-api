@@ -1,49 +1,12 @@
-// Import our Controllers
-const carController = require('../controllers/carController')
-const opts = {
-  schema: {
-    body: {
-      type: 'object',
-      properties: {
-        someKey: { type: 'string' },
-        someOtherKey: { type: 'number' }
-      }
-    }
-  }
-}
+var express = require('express');
+var router = express.Router();
 
-const routes = [
-  {
-    method: 'GET',
-    url: '/api/',
-    handler: carController.getAll
-  },
-  {
-    method: 'GET',
-    url: '/api/cars',
-    handler: carController.getCars
-  },
-  {
-    method: 'GET',
-    url: '/api/cars/:id',
-    handler: carController.getSingleCar
-  },
-  {
-    method: 'POST',
-    url: '/api/cars',
-    handler: carController.addCar
-   // schema: documentation.addCarSchema
-  },
-  {
-    method: 'PUT',
-    url: '/api/cars/:id',
-    handler: carController.updateCar
-  },
-  {
-    method: 'DELETE',
-    url: '/api/cars/:id',
-    handler: carController.deleteCar
-  }
-]
+router.get('/', function(req, res) {
+  res.send('<!doctype html>\n<html lang="en">\n' +  
+  '\n<meta charset="utf-8">\n<title>CSLMIS RESTFul API</title>\n' + 
+  '<style type="text/css">* {font-family:arial, sans-serif;}</style>\n' + 
+  '\n\n<h1>Welcome to CSLMIS Back-End</h1>\n' + 
+  '\n\n');
+});
 
-module.exports = routes
+module.exports = router
