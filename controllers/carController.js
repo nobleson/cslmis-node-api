@@ -8,7 +8,7 @@ const Car = require('../models/Car')
 exports.getAll = async (req, reply) => {
   try {
     
-    return {hello:'Hello Waorld'}
+    return {greetings:'Hello Waorld'}
   } catch (err) {
     throw boom.boomify(err)
   }

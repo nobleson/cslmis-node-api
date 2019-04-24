@@ -5,14 +5,27 @@
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
-    "mongoose": "^4.9.8"
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "ejs": "^2.4.1",
+    "mocha": "^2.4.5",
+    "mongodb": "^2.1.16",
+    "morgan": "^1.7.0",
+    "object-assign": "4.1.0",
+    "boom": "^7.3.0",
+    "fastify": "^2.1.0",
+    "fastify-swagger": "^2.3.2",
+    "mongoose": "^5.4.20"
   },
   "engine": {
     "node": "*",
     "npm": "*"
   },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  },
   "scripts": {
-    "start": "node main.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",

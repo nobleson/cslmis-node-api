@@ -15,7 +15,7 @@ const opts = {
 const routes = [
   {
     method: 'GET',
-    url: '/',
+    url: '/api/',
     handler: carController.getAll
   },
   {
