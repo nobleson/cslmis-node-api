@@ -23,7 +23,6 @@ mongoURL += mongoHost + ':' +  mongoPort + '/' + mongoDatabase;
 
 mongoose.connect(mongoURL);
 
-var Transaction = require('./models/transaction');
 
 var route = express.Router();
 
@@ -34,41 +33,13 @@ app.use('/api', route);
 
 // A route that dumps hostname information from pod
 route.get('/', function(req, res) {
-    res.send('Hi! I am running on host -> ' + hostname + '\n');
+    res.send('<!doctype html>\n<html lang="en">\n' +  
+    '\n<meta charset="utf-8">\n<title>CSLMIS RESTFul API</title>\n' + 
+    '<style type="text/css">* {font-family:arial, sans-serif;}</style>\n' + 
+    '\n\n<h1>Welcome to CSLMIS Back-End</h1>\n' + 
+    '<div id="content"><p>The server is running on</p><ul><li>Host '+hostname+'</li><li>IP '+ip+'</li><li>Port '+port+'</li></ul></div>' + 
+    '\n\n');
 });
-
-// This route handles tax calculation for our service
-route.route('/calculate')
-     .post(function(req, res) {
-
-        var tx = new Transaction();
-        tx.tx_id = req.body.id;
-        tx.amount = req.body.amount;
-
-        // Assume a 30% tax on all orders
-        var finalAmount = tx.amount + (tx.amount * .2);
-
-        tx.save(function(e) {
-            if (e)
-                res.send('ERROR: '+ e);
-
-            res.json({ message: 'OK',
-                      finalAmount: finalAmount
-            });
-        });
-
-    });
-
-// This route dumps all transactions
-route.route('/list')
-     .get(function(req, res) {
-       Transaction.find(function(err, txs) {
-        if (err)
-          res.send(err);
-
-        res.json(txs);
-       });
-    });
 
 app.listen(port, ip);
 console.log('nodejs server running on http://%s:%s', ip, port);
