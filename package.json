@@ -1,6 +1,6 @@
 {
   "name": "cslmisnode",
-  "main": "main.js",
+  "main": "index.js",
   "description": "A microservice for construction skills",
   "dependencies": {
     "body-parser": "^1.17.1",
