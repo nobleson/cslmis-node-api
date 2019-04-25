@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 // Require controller modules.
-var artisan  = require('../controllers/Artisan');
+var artisan  = require('../controllers/artisan/Artisan');
 
 router.get('/getall', artisan.findAll);
 

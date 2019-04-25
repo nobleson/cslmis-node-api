@@ -40,10 +40,16 @@ mongoose.connect(mongoURL, {
 
 var indexRouter = require('./routes');
 var artisanRouter = require('./routes/Artisan');
+var artisanCenterRouter = require('./routes/ArtisanCenter');
+var artisanEducationRouter = require('./routes/ArtisanEducation');
+var artisanApprentishipRouter = require('./routes/ArtisanApprentiship');
 
 // All our services are under the /api context
 app.use('/api', indexRouter); 
 app.use('/api/artisan', artisanRouter); 
+app.use('/api/artisanCenter', artisanCenterRouter); 
+app.use('/api/artisanEducation', artisanEducationRouter);
+app.use('/api/artisanApprentiship', artisanApprentishipRouter); 
 
 // Start defining routes for our app/microservice
 

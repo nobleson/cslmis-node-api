@@ -2,7 +2,7 @@
 const mongoose = require('mongoose')
 
 const artisanSchema = new mongoose.Schema({
-artisanId: String,
+_id: String,
 surname: String,
 middleName: String,
 otherName: String,
