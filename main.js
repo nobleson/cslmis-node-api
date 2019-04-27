@@ -39,22 +39,43 @@ mongoose.connect(mongoURL, {
 });
 
 var indexRouter = require('./routes');
-var artisanRouter = require('./routes/Artisan');
-var artisanCenterRouter = require('./routes/ArtisanCenter');
-var artisanEducationRouter = require('./routes/ArtisanEducation');
-var artisanApprentishipRouter = require('./routes/ArtisanApprentiship');
+var artisanRouter = require('./routes/artisan/Artisan');
+var artisanCenterRouter = require('./routes/artisan/ArtisanCenter');
+var artisanEducationRouter = require('./routes/artisan/ArtisanEducation');
+var artisanApprentishipRouter = require('./routes/artisan/ArtisanApprentiship');
 
-// All our services are under the /api context
+var centerRouter = require('./routes/center/Center');
+var centerCourseRouter = require('./routes/center/Course');
+var centerStrength = require('./routes/center/Strength');
+var centerBoard = require('./routes/center/Board');
+var centerFacility = require('./routes/center/Facility');
+var centerAffiliate = require('./routes/center/Affiliate');
+var centerTrade = require('./routes/center/Trade');
+var centerProgram = require('./routes/center/Program');
+var centerReport = require('./routes/center/Report');
+
+// All our services are under the /api context 
 app.use('/api', indexRouter); 
 app.use('/api/artisan', artisanRouter); 
-app.use('/api/artisanCenter', artisanCenterRouter); 
-app.use('/api/artisanEducation', artisanEducationRouter);
-app.use('/api/artisanApprentiship', artisanApprentishipRouter); 
+app.use('/api/artisan/center', artisanCenterRouter); 
+app.use('/api/artisan/education', artisanEducationRouter);
+app.use('/api/artisan/apprentiship', artisanApprentishipRouter); 
+
+app.use('/api/center', centerRouter); 
+app.use('/api/center/course', centerCourseRouter); 
+app.use('/api/center/strength', centerStrength); 
+app.use('/api/center/board', centerBoard); 
+app.use('/api/center/facility', centerFacility); 
+app.use('/api/center/affiliate', centerAffiliate); 
+app.use('/api/center/trade', centerTrade); 
+app.use('/api/center/program', centerProgram); 
+app.use('/api/center/report', centerReport); 
+
 
 // Start defining routes for our app/microservice
 
 // A route that dumps hostname information from pod
-
+ 
 
 app.listen(port, ip);
 console.log('nodejs server running on http://%s:%s', ip, port);
