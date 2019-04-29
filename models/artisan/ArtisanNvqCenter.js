@@ -1,13 +1,14 @@
 // External Dependancies
 const mongoose = require('mongoose')
 
-const artisanCenterSchema = new mongoose.Schema({
-_id: String,
+const artisanNvqCenterSchema = new mongoose.Schema({
+
 centerName: String,
 centerNumber: String,
 candidateNumber:String,
 candidateTrade: String,
+artisanId: String
 
 })
 
-module.exports = mongoose.model('ArtisanCenter', artisanCenterSchema)
+module.exports = mongoose.model('ArtisanNvqCenter', artisanNvqCenterSchema)

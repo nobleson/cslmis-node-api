@@ -38,18 +38,45 @@ mongoose.connect(mongoURL, {
     process.exit();
 });
 
+//All artisan routers
 var indexRouter = require('./routes');
 var artisanRouter = require('./routes/Artisan');
-var artisanCenterRouter = require('./routes/ArtisanCenter');
+var artisanNvqCenterRouter = require('./routes/ArtisanNvqCenter');
 var artisanEducationRouter = require('./routes/ArtisanEducation');
 var artisanApprentishipRouter = require('./routes/ArtisanApprentiship');
+var artisanEmployementHistoryRouter = require('./routes/ArtisanEmployementHistory');
+var artisanCertificateIdRouter = require('./routes/ArtisanCertificate');
+var artisanLicenseRouter = require('./routes/ArtisanLicense');
+
+//Article router
+var articleRouter = require('./routes/article/Article');
+
+// Company routes
+var companyRouter = require('./routes/company/Company');
+var jobAdventRouter = require('./routes/company/JobAdvent');
+var jobApplicationRouter = require('./routes/company/JobApplication');
+var labourStatisticRouter = require('./routes/company/LabourStatistic');
+var retrenchementRouter = require('./routes/company/Retrenchement');
 
 // All our services are under the /api context
 app.use('/api', indexRouter); 
 app.use('/api/artisan', artisanRouter); 
-app.use('/api/artisanCenter', artisanCenterRouter); 
+app.use('/api/artisanNvqCenter', artisanNvqCenterRouter); 
 app.use('/api/artisanEducation', artisanEducationRouter);
-app.use('/api/artisanApprentiship', artisanApprentishipRouter); 
+app.use('/api/artisanApprentiship', artisanApprentishipRouter);
+app.use('/api/artisanEmployementHistory', artisanEmployementHistoryRouter); 
+app.use('/api/artisanCertificate', artisanCertificateIdRouter);
+app.use('/api/artisanLicense', artisanLicenseRouter);
+
+app.use('/api/article', articleRouter);
+
+app.use('/api/company', companyRouter);
+app.use('/api/jobAdvent', jobAdventRouter);
+app.use('/api/jobApplication', jobApplicationRouter);
+app.use('/api/labourStatistic', labourStatisticRouter);
+app.use('/api/retrenchement', retrenchementRouter);
+
+
 
 // Start defining routes for our app/microservice
 
