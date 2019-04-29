@@ -21,7 +21,7 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-    centerFacility.find()
+    Facility.find()
     .then(centerFacility => {
         res.send(centerFacility);
     }).catch(err => {
@@ -31,7 +31,7 @@ exports.findAll = (req, res) => {
     });
 };
 exports.findOne = (req, res) => {
-    centerFacility.findById(req.params.centerFacilityId)
+    Facility.findById(req.params.centerFacilityId)
     .then(centerFacility => {
         if(!centerFacility) {
             return res.status(404).send({
@@ -56,7 +56,7 @@ exports.update = (req, res) => {
     const id = req.params.centerFacilityId
     const art = req.body
     const { ...updateData } = art
-    centerFacility.findByIdAndUpdate(id,updateData,{new: true})
+    Facility.findByIdAndUpdate(id,updateData,{new: true})
     .then(centerFacility => {
         if(!centerFacility) {
             return res.status(404).send({
@@ -76,7 +76,7 @@ exports.update = (req, res) => {
     });
 };
 exports.delete = (req, res) => {
-    centerFacility.findByIdAndRemove(req.params.centerFacilityId)
+    Facility.findByIdAndRemove(req.params.centerFacilityId)
     .then(centerFacility => {
         if(!centerFacility) {
             return res.status(404).send({

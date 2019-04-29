@@ -40,30 +40,13 @@ mongoose.connect(mongoURL, {
 
 //All artisan routers
 var indexRouter = require('./routes');
-<<<<<<< HEAD
-var artisanRouter = require('./routes/Artisan');
-var artisanNvqCenterRouter = require('./routes/ArtisanNvqCenter');
-var artisanEducationRouter = require('./routes/ArtisanEducation');
-var artisanApprentishipRouter = require('./routes/ArtisanApprentiship');
-var artisanEmployementHistoryRouter = require('./routes/ArtisanEmployementHistory');
-var artisanCertificateIdRouter = require('./routes/ArtisanCertificate');
-var artisanLicenseRouter = require('./routes/ArtisanLicense');
-
-//Article router
-var articleRouter = require('./routes/article/Article');
-
-// Company routes
-var companyRouter = require('./routes/company/Company');
-var jobAdventRouter = require('./routes/company/JobAdvent');
-var jobApplicationRouter = require('./routes/company/JobApplication');
-var labourStatisticRouter = require('./routes/company/LabourStatistic');
-var retrenchementRouter = require('./routes/company/Retrenchement');
-=======
 var artisanRouter = require('./routes/artisan/Artisan');
-var artisanCenterRouter = require('./routes/artisan/ArtisanCenter');
+var artisanNvqCenterRouter = require('./routes/artisan/ArtisanNvqCenter');
 var artisanEducationRouter = require('./routes/artisan/ArtisanEducation');
 var artisanApprentishipRouter = require('./routes/artisan/ArtisanApprentiship');
->>>>>>> 5da880493d56b131c64eded8269697ea7cbef546
+var artisanCertificateRouter = require('./routes/artisan/ArtisanCertificate');
+var artisanEmployementHistorytRouter = require('./routes/artisan/ArtisanEmployementHistory');
+var artisanLicenseRouter = require('./routes/artisan/ArtisanLicense');
 
 var centerRouter = require('./routes/center/Center');
 var centerCourseRouter = require('./routes/center/Course');
@@ -78,26 +61,12 @@ var centerReport = require('./routes/center/Report');
 // All our services are under the /api context 
 app.use('/api', indexRouter); 
 app.use('/api/artisan', artisanRouter); 
-<<<<<<< HEAD
-app.use('/api/artisanNvqCenter', artisanNvqCenterRouter); 
-app.use('/api/artisanEducation', artisanEducationRouter);
-app.use('/api/artisanApprentiship', artisanApprentishipRouter);
-app.use('/api/artisanEmployementHistory', artisanEmployementHistoryRouter); 
-app.use('/api/artisanCertificate', artisanCertificateIdRouter);
-app.use('/api/artisanLicense', artisanLicenseRouter);
-
-app.use('/api/article', articleRouter);
-
-app.use('/api/company', companyRouter);
-app.use('/api/jobAdvent', jobAdventRouter);
-app.use('/api/jobApplication', jobApplicationRouter);
-app.use('/api/labourStatistic', labourStatisticRouter);
-app.use('/api/retrenchement', retrenchementRouter);
-
-=======
-app.use('/api/artisan/center', artisanCenterRouter); 
+app.use('/api/artisan/nvq/center', artisanNvqCenterRouter); 
 app.use('/api/artisan/education', artisanEducationRouter);
 app.use('/api/artisan/apprentiship', artisanApprentishipRouter); 
+app.use('/api/artisan/certificate', artisanCertificateRouter);
+app.use('/api/artisan/employement/history', artisanEmployementHistorytRouter);
+app.use('/api/artisan/license', artisanLicenseRouter);
 
 app.use('/api/center', centerRouter); 
 app.use('/api/center/course', centerCourseRouter); 
@@ -108,8 +77,6 @@ app.use('/api/center/affiliate', centerAffiliate);
 app.use('/api/center/trade', centerTrade); 
 app.use('/api/center/program', centerProgram); 
 app.use('/api/center/report', centerReport); 
->>>>>>> 5da880493d56b131c64eded8269697ea7cbef546
-
 
 // Start defining routes for our app/microservice
 

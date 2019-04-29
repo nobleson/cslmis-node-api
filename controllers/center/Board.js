@@ -21,7 +21,7 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-    centerBoard.find()
+    Board.find()
     .then(centerBoard => {
         res.send(centerBoard);
     }).catch(err => {
@@ -31,7 +31,7 @@ exports.findAll = (req, res) => {
     });
 };
 exports.findOne = (req, res) => {
-    centerBoard.findById(req.params.centerBoardId)
+    Board.findById(req.params.centerBoardId)
     .then(centerBoard => {
         if(!centerBoard) {
             return res.status(404).send({
@@ -56,7 +56,7 @@ exports.update = (req, res) => {
     const id = req.params.centerBoardId
     const art = req.body
     const { ...updateData } = art
-    centerBoard.findByIdAndUpdate(id,updateData,{new: true})
+    Board.findByIdAndUpdate(id,updateData,{new: true})
     .then(centerBoard => {
         if(!centerBoard) {
             return res.status(404).send({
@@ -76,7 +76,7 @@ exports.update = (req, res) => {
     });
 };
 exports.delete = (req, res) => {
-    centerBoard.findByIdAndRemove(req.params.centerBoardId)
+    Board.findByIdAndRemove(req.params.centerBoardId)
     .then(centerBoard => {
         if(!centerBoard) {
             return res.status(404).send({

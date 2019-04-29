@@ -21,7 +21,7 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-    centerAffiliate.find()
+    Affiliate.find()
     .then(centerAffiliate => {
         res.send(centerAffiliate);
     }).catch(err => {
@@ -31,7 +31,7 @@ exports.findAll = (req, res) => {
     });
 };
 exports.findOne = (req, res) => {
-    centerAffiliate.findById(req.params.centerAffiliateId)
+    Affiliate.findById(req.params.centerAffiliateId)
     .then(centerAffiliate => {
         if(!centerAffiliate) {
             return res.status(404).send({
@@ -56,7 +56,7 @@ exports.update = (req, res) => {
     const id = req.params.centerAffiliateId
     const art = req.body
     const { ...updateData } = art
-    centerAffiliate.findByIdAndUpdate(id,updateData,{new: true})
+    Affiliate.findByIdAndUpdate(id,updateData,{new: true})
     .then(centerAffiliate => {
         if(!centerAffiliate) {
             return res.status(404).send({
@@ -76,7 +76,7 @@ exports.update = (req, res) => {
     });
 };
 exports.delete = (req, res) => {
-    centerAffiliate.findByIdAndRemove(req.params.centerAffiliateId)
+    Affiliate.findByIdAndRemove(req.params.centerAffiliateId)
     .then(centerAffiliate => {
         if(!centerAffiliate) {
             return res.status(404).send({

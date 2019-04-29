@@ -21,7 +21,7 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-    course.find()
+    Course.find()
     .then(course => {
         res.send(course);
     }).catch(err => {
@@ -31,7 +31,7 @@ exports.findAll = (req, res) => {
     });
 };
 exports.findOne = (req, res) => {
-    course.findById(req.params.courseId)
+    Course.findById(req.params.courseId)
     .then(course => {
         if(!course) {
             return res.status(404).send({
@@ -56,7 +56,7 @@ exports.update = (req, res) => {
     const id = req.params.courseId
     const art = req.body
     const { ...updateData } = art
-    course.findByIdAndUpdate(id,updateData,{new: true})
+    Course.findByIdAndUpdate(id,updateData,{new: true})
     .then(course => {
         if(!course) {
             return res.status(404).send({
@@ -76,7 +76,7 @@ exports.update = (req, res) => {
     });
 };
 exports.delete = (req, res) => {
-    course.findByIdAndRemove(req.params.courseId)
+    Course.findByIdAndRemove(req.params.courseId)
     .then(course => {
         if(!course) {
             return res.status(404).send({

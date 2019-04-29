@@ -21,7 +21,7 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-    centerTrade.find()
+    Trade.find()
     .then(centerTrade => {
         res.send(centerTrade);
     }).catch(err => {
@@ -31,7 +31,7 @@ exports.findAll = (req, res) => {
     });
 };
 exports.findOne = (req, res) => {
-    centerTrade.findById(req.params.centerTradeId)
+    Trade.findById(req.params.centerTradeId)
     .then(centerTrade => {
         if(!centerTrade) {
             return res.status(404).send({
@@ -56,7 +56,7 @@ exports.update = (req, res) => {
     const id = req.params.centerTradeId
     const art = req.body
     const { ...updateData } = art
-    centerTrade.findByIdAndUpdate(id,updateData,{new: true})
+    Trade.findByIdAndUpdate(id,updateData,{new: true})
     .then(centerTrade => {
         if(!centerTrade) {
             return res.status(404).send({
@@ -76,7 +76,7 @@ exports.update = (req, res) => {
     });
 };
 exports.delete = (req, res) => {
-    centerTrade.findByIdAndRemove(req.params.centerTradeId)
+    Trade.findByIdAndRemove(req.params.centerTradeId)
     .then(centerTrade => {
         if(!centerTrade) {
             return res.status(404).send({

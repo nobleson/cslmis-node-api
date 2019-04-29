@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 // Require controller modules.
-var artisanNvqCenter  = require('../controllers/artisan/ArtisanNvqCenter');
+var artisanNvqCenter  = require('../../controllers/artisan/ArtisanNvqCenter');
 
 router.get('/getall', artisanNvqCenter.findAll);
 

@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 // Require controller modules.
-var artisanLicense  = require('../controllers/artisan/ArtisanLicense');
+var artisanLicense  = require('../../controllers/artisan/ArtisanLicense');
 
 router.get('/getall', artisanLicense.findAll);
 

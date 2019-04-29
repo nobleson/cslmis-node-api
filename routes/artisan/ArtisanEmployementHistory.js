@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 // Require controller modules.
-var artisanEmployementHistory  = require('../controllers/artisan/ArtisanEmployementHistory');
+var artisanEmployementHistory  = require('../../controllers/artisan/ArtisanEmployementHistory');
 
 router.get('/getall', artisanEmployementHistory.findAll);
 
