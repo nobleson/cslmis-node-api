@@ -3,7 +3,6 @@
 const mongoose = require('mongoose')
 
 const artisanApprentishipSchema = new mongoose.Schema({
-    _id: String,
     apprentishipPlace:String,
     apprentishipYear:String,
     masterFullName:String,
@@ -13,7 +12,8 @@ const artisanApprentishipSchema = new mongoose.Schema({
     certificateTestimonial:String,
     reasonForNotIssued:String,
     tradeLearnt:String,
-    recordDate:String
+    recordDate:String,
+    artisanId: String
 })
 
 module.exports = mongoose.model('ArtisanApprentiship', artisanApprentishipSchema)

@@ -21,7 +21,7 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-    centerReport.find()
+    Report.find()
     .then(centerReport => {
         res.send(centerReport);
     }).catch(err => {
@@ -31,7 +31,7 @@ exports.findAll = (req, res) => {
     });
 };
 exports.findOne = (req, res) => {
-    centerReport.findById(req.params.centerReportId)
+    Report.findById(req.params.centerReportId)
     .then(centerReport => {
         if(!centerReport) {
             return res.status(404).send({
@@ -56,7 +56,7 @@ exports.update = (req, res) => {
     const id = req.params.centerReportId
     const art = req.body
     const { ...updateData } = art
-    centerReport.findByIdAndUpdate(id,updateData,{new: true})
+    Report.findByIdAndUpdate(id,updateData,{new: true})
     .then(centerReport => {
         if(!centerReport) {
             return res.status(404).send({
@@ -76,7 +76,7 @@ exports.update = (req, res) => {
     });
 };
 exports.delete = (req, res) => {
-    centerReport.findByIdAndRemove(req.params.centerReportId)
+    Report.findByIdAndRemove(req.params.centerReportId)
     .then(centerReport => {
         if(!centerReport) {
             return res.status(404).send({

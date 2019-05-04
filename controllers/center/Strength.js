@@ -21,7 +21,7 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-    centerStrength.find()
+    Strength.find()
     .then(centerStrength => {
         res.send(centerStrength);
     }).catch(err => {
@@ -31,7 +31,7 @@ exports.findAll = (req, res) => {
     });
 };
 exports.findOne = (req, res) => {
-    centerStrength.findById(req.params.centerStrengthId)
+    Strength.findById(req.params.centerStrengthId)
     .then(centerStrength => {
         if(!centerStrength) {
             return res.status(404).send({
@@ -56,7 +56,7 @@ exports.update = (req, res) => {
     const id = req.params.centerStrengthId
     const art = req.body
     const { ...updateData } = art
-    centerStrength.findByIdAndUpdate(id,updateData,{new: true})
+    Strength.findByIdAndUpdate(id,updateData,{new: true})
     .then(centerStrength => {
         if(!centerStrength) {
             return res.status(404).send({
@@ -76,7 +76,7 @@ exports.update = (req, res) => {
     });
 };
 exports.delete = (req, res) => {
-    centerStrength.findByIdAndRemove(req.params.centerStrengthId)
+    Strength.findByIdAndRemove(req.params.centerStrengthId)
     .then(centerStrength => {
         if(!centerStrength) {
             return res.status(404).send({

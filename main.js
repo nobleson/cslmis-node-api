@@ -53,11 +53,15 @@ mongoose.connect(mongoURL, {
     process.exit();
 });
 
+//All artisan routers
 var indexRouter = require('./routes');
 var artisanRouter = require('./routes/artisan/Artisan');
-var artisanCenterRouter = require('./routes/artisan/ArtisanCenter');
+var artisanNvqCenterRouter = require('./routes/artisan/ArtisanNvqCenter');
 var artisanEducationRouter = require('./routes/artisan/ArtisanEducation');
 var artisanApprentishipRouter = require('./routes/artisan/ArtisanApprentiship');
+var artisanCertificateRouter = require('./routes/artisan/ArtisanCertificate');
+var artisanEmployementHistorytRouter = require('./routes/artisan/ArtisanEmployementHistory');
+var artisanLicenseRouter = require('./routes/artisan/ArtisanLicense');
 
 var centerRouter = require('./routes/center/Center');
 var centerCourseRouter = require('./routes/center/Course');
@@ -74,9 +78,12 @@ var jsonRoute = require('./routes/json/Bucket')
 app.use(express.static('data',{index:false, extensions:['json']}),jsonRoute);
 app.use('/api', indexRouter); 
 app.use('/api/artisan', artisanRouter); 
-app.use('/api/artisan/center', artisanCenterRouter); 
+app.use('/api/artisan/nvq/center', artisanNvqCenterRouter); 
 app.use('/api/artisan/education', artisanEducationRouter);
 app.use('/api/artisan/apprentiship', artisanApprentishipRouter); 
+app.use('/api/artisan/certificate', artisanCertificateRouter);
+app.use('/api/artisan/employement/history', artisanEmployementHistorytRouter);
+app.use('/api/artisan/license', artisanLicenseRouter);
 
 app.use('/api/center', centerRouter); 
 app.use('/api/center/course', centerCourseRouter); 
@@ -87,7 +94,6 @@ app.use('/api/center/affiliate', centerAffiliate);
 app.use('/api/center/trade', centerTrade); 
 app.use('/api/center/program', centerProgram); 
 app.use('/api/center/report', centerReport); 
-
 
 // Start defining routes for our app/microservice
 

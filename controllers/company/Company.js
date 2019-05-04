@@ -1,97 +1,98 @@
 // External Dependancies
 
 // Get Data Models
-const Course = require('../../models/center/Course')
+const Company = require('../../models/company/Company')
 
 exports.create = (req, res) => {
     // Validate request
     //console.log("content in json:  "+JSON.stringify(req.body));
 
-    const course = new Course(req.body);
+    const company = new Company(req.body);
 
-    // Save course in the database
-    course.save()
+    // Save artisan in the database
+    company.save()
     .then(data => {
         res.send(data);
     }).catch(err => {
         res.status(500).send({
-            message: err.message || "Some error occurred while creating the course."
+            message: err.message || "Some error occurred while creating the company."
         });
     });
 };
 
 exports.findAll = (req, res) => {
-    Course.find()
-    .then(course => {
-        res.send(course);
+    Company.find()
+    .then(company => {
+        res.send(company);
     }).catch(err => {
         res.status(500).send({
             message: err.message || "Some error occurred while retrieving notes."
         });
     });
 };
+
 exports.findOne = (req, res) => {
-    Course.findById(req.params.courseId)
-    .then(course => {
-        if(!course) {
+    Company.findById(req.params.companyId)
+    .then(company => {
+        if(!company) {
             return res.status(404).send({
-                message: "course not found with id " + req.params.courseId
+                message: "company not found with id " + req.params.companyId
             });            
         }
-        res.send(course);
+        res.send(company);
     }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).send({
-                message: "course not found with id " + req.params.courseId
+                message: "company not found with id " + req.params.companyId
             });                
         }
         return res.status(500).send({
-            message: "Error retrieving note with id " + req.params.courseId
+            message: "Error retrieving note with id " + req.params.companyId
         });
     });
 };
 
 exports.update = (req, res) => {
  
-    const id = req.params.courseId
+    const id = req.params.companyId
     const art = req.body
     const { ...updateData } = art
-    Course.findByIdAndUpdate(id,updateData,{new: true})
-    .then(course => {
-        if(!course) {
+    Company.findByIdAndUpdate(id,updateData,{new: true})
+    .then(company => {
+        if(!company) {
             return res.status(404).send({
-                message: "course not found with id " + req.params.courseId
+                message: "company not found with id " + req.params.companyId
             });
         }
-        res.send(course);
+        res.send(company);
     }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).send({
-                message: "course not found with id " + req.params.courseId
+                message: "company not found with id " + req.params.companyId
             });                
         }
         return res.status(500).send({
-            message: "Error updating note with id " + req.params.courseId
+            message: "Error updating note with id " + req.params.companyId
         });
     });
 };
 exports.delete = (req, res) => {
-    Course.findByIdAndRemove(req.params.courseId)
-    .then(course => {
-        if(!course) {
+    Company.findByIdAndRemove(req.params.companyId)
+    .then(company => {
+        if(!company) {
             return res.status(404).send({
-                message: "course not found with id " + req.params.courseId
+                message: "company not found with id " + req.params.companyId
             });
         }
-        res.send({message: "course deleted successfully!"});
+        res.send({message: "company deleted successfully!"});
     }).catch(err => {
         if(err.kind === 'ObjectId' || err.name === 'NotFound') {
             return res.status(404).send({
-                message: "course not found with id " + req.params.courseId
+                message: "company not found with id " + req.params.companyId
             });                
         }
         return res.status(500).send({
-            message: "Could not delete note with id " + req.params.courseId
+            message: "Could not delete note with id " + req.params.companyId
         });
     });
 };

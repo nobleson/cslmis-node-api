@@ -21,7 +21,7 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-    centerProgram.find()
+    Program.find()
     .then(centerProgram => {
         res.send(centerProgram);
     }).catch(err => {
@@ -31,7 +31,7 @@ exports.findAll = (req, res) => {
     });
 };
 exports.findOne = (req, res) => {
-    centerProgram.findById(req.params.centerProgramId)
+    Program.findById(req.params.centerProgramId)
     .then(centerProgram => {
         if(!centerProgram) {
             return res.status(404).send({
@@ -56,7 +56,7 @@ exports.update = (req, res) => {
     const id = req.params.centerProgramId
     const art = req.body
     const { ...updateData } = art
-    centerProgram.findByIdAndUpdate(id,updateData,{new: true})
+    Program.findByIdAndUpdate(id,updateData,{new: true})
     .then(centerProgram => {
         if(!centerProgram) {
             return res.status(404).send({
@@ -76,7 +76,7 @@ exports.update = (req, res) => {
     });
 };
 exports.delete = (req, res) => {
-    centerProgram.findByIdAndRemove(req.params.centerProgramId)
+    Program.findByIdAndRemove(req.params.centerProgramId)
     .then(centerProgram => {
         if(!centerProgram) {
             return res.status(404).send({

@@ -1,29 +1,29 @@
 // External Dependancies
 
 // Get Data Models
-const Course = require('../../models/center/Course')
+const Article = require('../../models/article/Article')
 
 exports.create = (req, res) => {
     // Validate request
     //console.log("content in json:  "+JSON.stringify(req.body));
 
-    const course = new Course(req.body);
+    const article = new Article(req.body);
 
-    // Save course in the database
-    course.save()
+    // Save artisan in the database
+    article.save()
     .then(data => {
         res.send(data);
     }).catch(err => {
         res.status(500).send({
-            message: err.message || "Some error occurred while creating the course."
+            message: err.message || "Some error occurred while creating the Article."
         });
     });
 };
 
 exports.findAll = (req, res) => {
-    Course.find()
-    .then(course => {
-        res.send(course);
+    Article.find()
+    .then(article => {
+        res.send(article);
     }).catch(err => {
         res.status(500).send({
             message: err.message || "Some error occurred while retrieving notes."
@@ -31,67 +31,67 @@ exports.findAll = (req, res) => {
     });
 };
 exports.findOne = (req, res) => {
-    Course.findById(req.params.courseId)
-    .then(course => {
-        if(!course) {
+    Article.findById(req.params.articleId)
+    .then(article => {
+        if(!article) {
             return res.status(404).send({
-                message: "course not found with id " + req.params.courseId
+                message: "Article not found with id " + req.params.articleId
             });            
         }
-        res.send(course);
+        res.send(article);
     }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).send({
-                message: "course not found with id " + req.params.courseId
+                message: "Article not found with id " + req.params.articleId
             });                
         }
         return res.status(500).send({
-            message: "Error retrieving note with id " + req.params.courseId
+            message: "Error retrieving note with id " + req.params.articleId
         });
     });
 };
 
 exports.update = (req, res) => {
  
-    const id = req.params.courseId
+    const id = req.params.articleId
     const art = req.body
     const { ...updateData } = art
-    Course.findByIdAndUpdate(id,updateData,{new: true})
-    .then(course => {
-        if(!course) {
+    Article.findByIdAndUpdate(id,updateData,{new: true})
+    .then(article => {
+        if(!article) {
             return res.status(404).send({
-                message: "course not found with id " + req.params.courseId
+                message: "Article not found with id " + req.params.articleId
             });
         }
-        res.send(course);
+        res.send(article);
     }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).send({
-                message: "course not found with id " + req.params.courseId
+                message: "Article not found with id " + req.params.articleId
             });                
         }
         return res.status(500).send({
-            message: "Error updating note with id " + req.params.courseId
+            message: "Error updating note with id " + req.params.articleId
         });
     });
 };
 exports.delete = (req, res) => {
-    Course.findByIdAndRemove(req.params.courseId)
-    .then(course => {
-        if(!course) {
+    Article.findByIdAndRemove(req.params.articleId)
+    .then(article => {
+        if(!article) {
             return res.status(404).send({
-                message: "course not found with id " + req.params.courseId
+                message: "Article not found with id " + req.params.articleId
             });
         }
-        res.send({message: "course deleted successfully!"});
+        res.send({message: "Article deleted successfully!"});
     }).catch(err => {
         if(err.kind === 'ObjectId' || err.name === 'NotFound') {
             return res.status(404).send({
-                message: "course not found with id " + req.params.courseId
+                message: "Article not found with id " + req.params.articleId
             });                
         }
         return res.status(500).send({
-            message: "Could not delete note with id " + req.params.courseId
+            message: "Could not delete note with id " + req.params.articleId
         });
     });
 };
