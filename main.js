@@ -4,7 +4,22 @@ var express = require('express'),
     mongoose   = require('mongoose'),
     os = require('os'),
     hostname = os.hostname();
-
+    var cors = require('cors');
+    var allowedOrigins = ['http://localhost:3000',
+                        'http://cslmis.gov.ng'];
+    app.use(cors({
+    origin: function(origin, callback){
+        // allow requests with no origin 
+        // (like mobile apps or curl requests)
+        if(!origin) return callback(null, true);
+        if(allowedOrigins.indexOf(origin) === -1){
+        var msg = 'The CORS policy for this site does not ' +
+                    'allow access from the specified Origin.';
+        return callback(new Error(msg), false);
+        }
+        return callback(null, true);
+    }
+    }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -53,8 +68,10 @@ var centerAffiliate = require('./routes/center/Affiliate');
 var centerTrade = require('./routes/center/Trade');
 var centerProgram = require('./routes/center/Program');
 var centerReport = require('./routes/center/Report');
+var jsonRoute = require('./routes/json/Bucket')
 
 // All our services are under the /api context 
+app.use(express.static('data',{index:false, extensions:['json']}),jsonRoute);
 app.use('/api', indexRouter); 
 app.use('/api/artisan', artisanRouter); 
 app.use('/api/artisan/center', artisanCenterRouter); 

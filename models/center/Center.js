@@ -15,7 +15,10 @@ const artisanSchema = new mongoose.Schema({
     contactPersonsNumber: String,
     contactPersonsEmail: String,
     dateFounded: String,
-    primaryCtivities: String,
+    primaryCtivities: {
+        type: Map,
+        of: String
+      },
     noPermanentTrainer: String,
     noAdjunctTrainers: String,
     noAdminStaff: String,
